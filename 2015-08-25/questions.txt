@@ -18,6 +18,27 @@ In practice, this took X time.  This includes
 Consider the following questions:
 
 1. What is a simple model that would predict this time?
+
+Assume that the time in seconds to start the process (i.e. explain the process
+to the students) takes a fixed number of seconds `t_s`. Assume there are `n`
+rows `r_1, r_2, ..., r_n` such that it takes `t_ri` seconds for row `r_i` to
+count its students. Assume it takes `t_c` seconds for the instructor to gather
+a single row count and `t_a` seconds for the instructor to perform arithmetic
+on a single count.
+
+Then, the amount of time required to count a class of `n` rows is
+
+    t_s + max({t_ri | i in [1, n]}) + n * (t_c + t_a) [Eq. 1]
+
 2. What about a simple model to predict time for one person to count?
+
+When a single person counts students one by one, there is no overhead in
+explaining the process or performing arithmetic. If it takes `t` seconds to
+count a single student, then it requires `k * t` [Eq. 2] seconds to count `k`
+students.
+
 3. How big should the class be before the parallel method takes less time?
 
+Formally, it would be the smallest number of students such that the time
+computed by Eq 1. is smaller than the time computed by Eq 2. Practically, it
+would probably be around 100 or so students.
