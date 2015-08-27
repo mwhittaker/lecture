@@ -1,0 +1,13 @@
+# pip
+bin/
+include/
+lib/
+local/
+man/
+pip-selfcheck.json
+
+# latex
+*.aux
+*.fdb_latexmk
+*.log
+*.out
