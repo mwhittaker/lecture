@@ -1,9 +1,10 @@
 .PHONY: all clean
 
-all: centroid
+all: cent centroid
 
-centroid: centroid.c
-	gcc -std=c99 -Wall -Wextra -O3 -o centroid centroid.c
+%: %.c
+	gcc -std=c99 -Wall -Wextra -O3 -o $@ $<
 
 clean:
 	rm centroid
+	rm cent
