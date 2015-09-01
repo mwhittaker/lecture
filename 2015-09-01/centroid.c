@@ -18,7 +18,7 @@ void test_mean2(double *xymean, double* xy, int n)
     int i;
     double xsum = 0;
     double ysum = 0;
-    for (i = 0; i < 2*n; i += 2) 
+    for (i = 0; i < 2*n; i += 2)
         xsum += xy[i+0];
     for (i = 0; i < 2*n; i += 2)
         ysum += xy[i+1];
@@ -38,4 +38,3 @@ void test_mean3(double *xymean, double* xy, int n)
     xymean[0] = xsum/n;
     xymean[1] = ysum/n;
 }
-
