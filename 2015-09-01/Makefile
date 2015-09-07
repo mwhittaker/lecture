@@ -1,10 +1,11 @@
-.PHONY: all clean
+.PHONY: submit clean
 
-all: cent centroid
+submit: centroid
+	qsub centroid.pbs
 
-%: %.c
-	gcc -std=c99 -Wall -Wextra -O3 -o $@ $<
+centroid: centroid.c centroid.h centroid_timer.c
+	icc -o centroid centroid.c centroid_timer.c -qopenmp
 
 clean:
-	rm centroid
-	rm cent
+	rm -f centroid
+	rm *.o*
