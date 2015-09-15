@@ -1,0 +1,10 @@
+#!/bin/sh -l
+
+#PBS -l walltime=0:30:00
+#PBS -N life
+#PBS -j oe
+
+module load cs5220
+cd $PBS_O_WORKDIR
+time ./basic -f glider.txt -n 100 -g 1000
+time ./basic -f glider.txt -n 4000 -g 100
