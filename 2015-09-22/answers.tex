@@ -1,0 +1,61 @@
+% I use a custom document class that can be found at
+% github.com/mwhittaker/texmf. Honestly, it's a big pain in the butt to set it
+% up. Sorry this document isn't easier to compile! If you have the hw document
+% class set up, you can compile this document with `latexmk -pdf answers.tex`
+
+\documentclass{hw}
+\title{CS 5220 -- 2015-09-22 Preclass Questions}
+
+\hypersetup{
+  colorlinks = true,
+  allcolors = blue,
+}
+
+\begin{document}
+\maketitle{}
+
+\begin{enumerate}
+  \setcounter{enumi}{-1}
+  \item It took me $\approx 2$ hours to complete on September 21.
+
+  \item
+    When discussing the monte carlo simulation that computes the expected
+    minimum distance between pairs of points, some of the details of expected
+    value and variance were rushed. I think it would have been better to
+    analyze the toy example that computes $\frac{\pi}{4}$ rather than tackle
+    the more complicated example.
+
+  \item
+    \begin{enumerate}[a)]
+      \item
+        Each processor $p$ performs $\frac{N}{p}$ trials each of which takes
+        $t_t$ time. Since the processors can perform the trials in parallel,
+        all trials finish in $\frac{Nt_t}{p}$ time. Similarly, a total of
+        $\frac{N}{b}$ batches must update global counters for a total of
+        $\frac{N t_u}{b}$ time. This yields a total of
+        \[
+          \frac{N t_t}{p} + \frac{N t_u}{b}
+        \]
+
+      \item
+        A run with $p = 1, b = 32$ takes $0.008289$ seconds across $1000032$
+        trials. A run with $p = 32, b = 1$ takes $0.287262$ seconds across
+        $1000030$ seconds. Substituting into formula above, we get
+        \begin{align*}
+          0.008289 &= \frac{1000032 t_t}{1} + \frac{1000032 t_u}{32} \\
+          0.287262 &= \frac{1000030 t_t}{32} + \frac{1000030 t_u}{1}
+        \end{align*}
+        Solving these equations we find that $t_t = -6.88606 \times 10^{-10}$
+        seconds and $t_u = 2.87275 \times 10^{-7}$ seconds.
+
+      \item
+        In this model, we want the batch size to be as large as possible
+        because this minimizes the amount of global synchronization we need to
+        do. In practice, I would sweep across values of $b$ and use the one
+        that yields the smallest running time for a fixed $N$.
+    \end{enumerate}
+
+  \item
+    See \texttt{workq.c}.
+\end{enumerate}
+\end{document}
