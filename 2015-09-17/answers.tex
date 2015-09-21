@@ -1,0 +1,41 @@
+% I use a custom document class that can be found at
+% github.com/mwhittaker/texmf. Honestly, it's a big pain in the butt to set it
+% up. Sorry this document isn't easier to compile! If you have the hw document
+% class set up, you can compile this document with `latexmk -pdf answers.tex`
+
+\documentclass{hw}
+\title{CS 5220 -- 2015-09-17 Preclass Questions}
+
+\hypersetup{
+  colorlinks = true,
+  allcolors = blue,
+}
+
+\begin{document}
+\maketitle{}
+
+\begin{enumerate}
+  \setcounter{enumi}{-1}
+  \item Between 1 to 2 hours on September 21.
+
+  \item
+    The slides assume a lot of familiarity with various mathematical concepts
+    (e.g. ordinary differential equations, linear algebra, heat equation). It
+    would be useful to review some of the mathematical prerequisites instead of
+    assuming familiarity. Alternatively, I think a lot of the math could be
+    removed entirely.
+
+  \item
+    See \texttt{csr\_product.c}.
+
+  \item
+    See \texttt{laplace2d.c}.
+
+  \item
+    Admittedly, I didn't fully understand the lecture slides nor do I full
+    understand this question, but I'm guessing it involves some sort of
+    ghost-celling in which a processor receives more cells that it needs in
+    order to advance computation without communicating. I'm guessing there is
+    no advantage to this scheme with only one processor.
+\end{enumerate}
+\end{document}

@@ -21,11 +21,11 @@ that you can figure out the numerical jargon.
           int* ptr; /* Offsets of the start of each row in pr
                        (ptr[n] = number of nonzeros) */
       } csr_t;
-    
+
       void sparse_multiply(csr_t* A, double* x, double* result)
       {
           /* Fill in here */
-      } 
+      }
 
 3.  From the slides, complete the following short code:
 

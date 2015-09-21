@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 typedef struct csr_t {
     int  n;      /* Dimension of matrix (assume square) */
     double* pr;  /* Array of matrix nonzeros (row major order) */
@@ -15,8 +14,14 @@ typedef struct csr_t {
 void sparse_multiply(csr_t* A, double* x, double* result)
 {
     memset(result, 0, A->n * sizeof(double));
-    /* Fill in here */
-} 
+    double *data = A->pr;
+    for (int row = 0; row < A->n; ++row) {
+        for (int *col = &A->col[A->ptr[row]]; col != &A->col[A->ptr[row + 1]]; ++col) {
+            result[row] += *data * x[*col];
+            ++data;
+        }
+    }
+}
 
 
 int main()
@@ -32,9 +37,9 @@ int main()
 
     /*
      * Should compute
-     * [-1,  1,  0,  0 ]   [ 1  ]
-     * [ 0, -1,  1,  0 ] * [ 3  ]
-     * [ 0,  0, -1,  1 ]   [ 8  ]
+     * [ 1, -1,  0,  0 ]   [ 1  ]
+     * [ 0,  1, -1,  0 ] * [ 3  ]
+     * [ 0,  0,  1, -1 ]   [ 8  ]
      * [ 0,  0,  0,  1 ]   [ 12 ]
      */
     for (int i = 0; i < n; ++i)
