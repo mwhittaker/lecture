@@ -1,10 +1,9 @@
-#!/bin/sh -l
+#!/bin/sh
 
-#PBS -l walltime=0:30:00
 #PBS -N life
 #PBS -j oe
+#PBS -M bindel@cornell.edu
 
-module load cs5220
 cd $PBS_O_WORKDIR
-time ./basic -f glider.txt -n 100 -g 1000
-time ./basic -f glider.txt -n 4000 -g 100
+./basic -n 100 -g 1000 -f glider.txt
+./basic -n 4000 -g 100 -f glider.txt
