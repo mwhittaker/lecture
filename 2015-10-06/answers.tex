@@ -1,0 +1,96 @@
+% I use a custom document class that can be found at
+% github.com/mwhittaker/texmf. Honestly, it's a big pain in the butt to set it
+% up. Sorry this document isn't easier to compile! If you have the hw document
+% class set up, you can compile this document with `latexmk -pdf answers.tex`
+
+\documentclass{hw}
+\title{CS 5220 -- 2015-10-06 Preclass Questions}
+
+\hypersetup{
+  colorlinks = true,
+  allcolors = blue,
+}
+
+\begin{document}
+\maketitle{}
+
+\begin{enumerate}
+  \setcounter{enumi}{-1}
+  \item
+    I spent roughly 2 hours on this assignment the day before lecture.
+
+  \item
+    The slides were pretty clear, though one thing I'm still confused about is
+    what exactly is doing the message passing when using MPI? Do threads send
+    messages, or is message passing at the level of a processor, a computer, or
+    all of the above?
+
+  \item
+    \begin{enumerate}
+      \item
+        Running the ping-pong script using the Intel implementation of MPI, we
+        get the output shown in \tabref{intel}.
+
+        \begin{table}[h]
+          \centering
+          \begin{tabular}{|c|c|}
+            \hline 1     & 6.6205e-07  \\\hline
+            1001  & 1.26583e-06 \\\hline
+            2001  & 1.60071e-06 \\\hline
+            3001  & 8.9515e-07 \\\hline
+            4001  & 1.08444e-06 \\\hline
+            5001  & 1.24288e-06 \\\hline
+            6001  & 1.42984e-06 \\\hline
+            7001  & 1.6082e-06 \\\hline
+            8001  & 1.78244e-06 \\\hline
+            9001  & 1.94475e-06 \\\hline
+            10001 & 2.13511e-06 \\\hline
+            11001 & 2.3036e-06 \\\hline
+            12001 & 2.4666e-06 \\\hline
+            13001 & 2.61552e-06 \\\hline
+            14001 & 2.7857e-06 \\\hline
+            15001 & 2.95797e-06 \\\hline
+            16001 & 3.19682e-06 \\\hline
+          \end{tabular}
+          \caption{Intel MPI}
+          \label{tab:intel}
+        \end{table}
+
+      \item
+        Running the ping-pong script using the Intel implementation of MPI, we
+        get the output shown in \tabref{openmpi}. The performance is very
+        similar to that of the Intel MPI library.
+
+        \begin{table}[h]
+          \centering
+          \begin{tabular}{|c|c|}
+            \hline
+            1     & 4.86375e-07 \\\hline
+            1001  & 1.25883e-06 \\\hline
+            2001  & 1.67457e-06 \\\hline
+            3001  & 1.00342e-06 \\\hline
+            4001  & 1.02524e-06 \\\hline
+            5001  & 2.01144e-06 \\\hline
+            6001  & 2.28883e-06 \\\hline
+            7001  & 2.31887e-06 \\\hline
+            8001  & 2.52062e-06 \\\hline
+            9001  & 2.6876e-06 \\\hline
+            10001 & 2.8843e-06 \\\hline
+            11001 & 3.03124e-06 \\\hline
+            12001 & 3.09701e-06 \\\hline
+            13001 & 3.2832e-06 \\\hline
+            14001 & 3.41718e-06 \\\hline
+            15001 & 3.68358e-06 \\\hline
+            16001 & 3.81287e-06 \\\hline
+          \end{tabular}
+          \caption{OpenMPI}
+          \label{tab:openmpi}
+        \end{table}
+
+      \item
+        Say it takes $3 \times 10^{-6}$ seconds to send an MPI message. At
+        a rate of 2.40 GHz, two nodes can complete $14,400$ floating point
+        operations in the time it takes to send a single message.
+    \end{enumerate}
+\end{enumerate}
+\end{document}
