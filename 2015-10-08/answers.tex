@@ -1,0 +1,50 @@
+% I use a custom document class that can be found at
+% github.com/mwhittaker/texmf. Honestly, it's a big pain in the butt to set it
+% up. Sorry this document isn't easier to compile! If you have the hw document
+% class set up, you can compile this document with `latexmk -pdf answers.tex`
+
+\documentclass{hw}
+\title{CS 5220 -- 2015-10-08 Preclass Questions}
+
+\hypersetup{
+  colorlinks = true,
+  allcolors = blue,
+}
+
+\begin{document}
+\maketitle{}
+
+\begin{enumerate}
+  \setcounter{enumi}{-1}
+  \item
+    I spent one to two hours the day before class.
+
+  \item
+    The lecture slides and narration were pretty clear! I do have one
+    suggestion though. The lecture slides introduced a lot of different
+    functions, and there were plenty of pictures and code snippets to explain
+    them, but it's hard to understand the operations without sitting down and
+    experimenting with them. It would be nice to have a collection of minimal
+    MPI programs that we could study, and a set of programming exercises to
+    make sure we understand how to use them.
+
+  \item
+    I provided feedback in the CMS survey.
+
+  \item
+    \begin{enumerate}[(a)]
+      \item
+        \texttt{ring.c} involves a set of $n$ processes organized in a virtual
+        ring topology. Each member of the ring has a local portion of some set
+        of data. It computes locally, then sends its data to the next node in
+        the ring while simultaneously receiving data from the node before it.
+        This continues for a number of steps.
+
+      \item
+        Each thread copies the data it is handling into a third buffer. It then
+        initiates an asynchronous send. While the messages are being sent, it
+        computes local interactions. Once it's done, it waits to receive the
+        next batch of data, copies the data, and repeats the process.
+    \end{enumerate}
+\end{enumerate}
+\end{document}
